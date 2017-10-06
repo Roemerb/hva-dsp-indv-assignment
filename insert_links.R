@@ -1,10 +1,15 @@
 library(RMySQL)
+library(jsonlite)
 
-DB_HOST <- "127.0.0.1"
-DB_USER <- "homestead"
-DB_PASSWD <- "secret"
-DB_DATABASE <- "hva_bigdata_indv_assignment"
-DB_PORT <- 33060
+SECRETS_PATH = "/Users/roemerbakker/ownCloud/HvA/Data Processing And Storage/Individual Assignment/secrets.json"
+secrets <- read_json(path = SECRETS_PATH)
+
+
+DB_HOST <- secrets$db_host
+DB_USER <- secrets$db_user
+DB_PASSWD <- secrets$db_pass
+DB_DATABASE <- secrets$db_database
+DB_PORT <- secrets$db_port
 DATA_PATH = "/Users/roemerbakker/ownCloud/HvA/Data Processing And Storage/Individual Assignment/data/links.csv"
 
 data <- read.csv2(file=DATA_PATH, sep = ",")
