@@ -23,7 +23,7 @@ dbCon <- dbConnect(
   dbname = DB_DATABASE
 )
 
-data <- read.csv2(file = DATA_PATH, header = TRUE, sep = ",", nrows=1000000, stringsAsFactors = FALSE)
+data <- read.csv2(file = DATA_PATH, header = TRUE, sep = ",", stringsAsFactors = FALSE)
 
 # Rating data is loaded as factor instead of numeric. We'll convert it to numeric so we can aggregate
 data$rating = as.numeric(data$rating)
