@@ -26,7 +26,7 @@ db_connection = db_connect(DB_HOST, DB_USER, DB_PASS, DB_DATABASE, DB_PORT)
 for line in reader:
 	print "1: " + line[0]
 	print "2: " + line[1]
-	print "3: " + line[2]
+	print "3: " + line[2spot]
 	try:
 		cursor = db_connection.cursor()
 		print("Inserting row. TMDB ID: " + line[1])

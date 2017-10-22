@@ -1,13 +1,8 @@
 library(jsonlite)
-library(RMySQL)
-
 SECRETS_PATH = "/Users/roemerbakker/ownCloud/HvA/Data Processing And Storage/Individual Assignment/secrets.json"
+DATA_PATH = "/Users/roemerbakker/ownCloud/HvA/Data Processing And Storage/Individual Assignment/data/movies.csv"
 
 secrets = read_json(path = SECRETS_PATH)
-tmdbApiKey = secrets$tmdb_api_key
-genres = fromJSON(paste("https://api.themoviedb.org/3/genre/movie/list?api_key=",tmdbApiKey,"&language=en-US", sep=""))
-genres <- genres$genres
-genres <- data.frame(genres)
 
 DB_HOST <- secrets$db_host
 DB_USER <- secrets$db_user
@@ -24,4 +19,5 @@ dbCon <- dbConnect(
   dbname = DB_DATABASE
 )
 
-dbWriteTable(conn = dbCon, name='tmdb_genres', value= genres, overwrite=TRUE, row.names=FALSE)
+data <- read.csv2(file = DATA_PATH, header = FALSE, sep = ",")
+dbWriteTable(conn = dbCon, name='movielens_movies', value= data, overwrite=TRUE, row.names=FALSE)

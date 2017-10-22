@@ -4,7 +4,6 @@ library(jsonlite)
 SECRETS_PATH = "/Users/roemerbakker/ownCloud/HvA/Data Processing And Storage/Individual Assignment/secrets.json"
 secrets <- read_json(path = SECRETS_PATH)
 
-
 DB_HOST <- secrets$db_host
 DB_USER <- secrets$db_user
 DB_PASSWD <- secrets$db_pass
