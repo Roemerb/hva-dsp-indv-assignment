@@ -19,5 +19,5 @@ dbCon <- dbConnect(
   dbname = DB_DATABASE
 )
 
-data <- read.csv2(file = DATA_PATH, header = FALSE, sep = ",")
+data <- read.csv2(file = DATA_PATH, header = TRUE, sep = ",")
 dbWriteTable(conn = dbCon, name='movielens_movies', value= data, overwrite=TRUE, row.names=FALSE)

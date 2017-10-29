@@ -11,8 +11,6 @@ DB_DATABASE <- secrets$db_database
 DB_PORT <- secrets$db_port
 DATA_PATH = "/Users/roemerbakker/ownCloud/HvA/Data Processing And Storage/Individual Assignment/data/links.csv"
 
-data <- read.csv2(file=DATA_PATH, sep = ",")
-
 dbCon <- dbConnect(
   MySQL(),
   user = DB_USER,
@@ -22,6 +20,7 @@ dbCon <- dbConnect(
   dbname = DB_DATABASE
 )
 
+data <- read.csv2(file=DATA_PATH, sep = ",")
 for (row in rownames(data)) {
   if (is.na(data[row, "movieId"]))
   {
